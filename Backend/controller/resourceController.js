@@ -168,7 +168,7 @@ class ResourceController {
                     likes: "$_likes",
                     comments: "$_comments"
                 }
-            }).skip(startIndex).limit(limit).toArray();
+            })({ _resourceTimeStamp: -1 }).skip(startIndex).limit(limit).toArray();
 
             const totalCount = await resourceCollection.countDocuments();
     

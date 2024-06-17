@@ -60,7 +60,6 @@ class TherapistController {
     
     getTherapistById = async (req, res) => {
         try {
-            
             if (!req?.params?.id) {
                 return res.status(400).json({ 'message': 'ID parameter is required' });
             }
@@ -98,6 +97,7 @@ class TherapistController {
             const roundedRating = Math.round(averageRating * 100) / 100; // Rounding to two decimal places
     
             res.json({ ...therapist, rating: roundedRating });
+            console.log('hi', therapist)
         } catch (error) {
             res.status(500).json({ 'message': 'Failed to fetch therapist' });
         }
@@ -143,6 +143,7 @@ class TherapistController {
             const roundedRating = Math.round(averageRating * 100) / 100; // Rounding to two decimal places
     
             res.json({ ...therapist, rating: roundedRating });
+            
         } catch (error) {
             res.status(500).json({ 'message': 'Failed to fetch therapist' });
         }

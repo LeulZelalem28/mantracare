@@ -10,9 +10,6 @@ const bookingRouter = (db) => {
     router.route('/')
     .post(bookingController.createBooking);
 
-    router.route('/:id')
-    .get(bookingController.getBookingById);
-
     router.route('/:id/cancel')
     .put(bookingController.cancelBooking);
 
@@ -21,6 +18,9 @@ const bookingRouter = (db) => {
 
     router.route('/sessionMode/:sessionMode/sessionType/:sessionType')
     .get(bookingController.getBookingsBySessionType);
+
+    router.route('/:id')
+    .get(bookingController.getBookingById);
 
 
     return router;

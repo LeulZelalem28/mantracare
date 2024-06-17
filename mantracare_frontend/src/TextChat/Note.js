@@ -11,7 +11,7 @@ const Note = ({ accessToken }) => {
   const [noteList, setNoteList] = useState([]);
   const [editNoteId, setEditNoteId] = useState(null);
   const [editNoteContent, setEditNoteContent] = useState('');
-  const [isnoteLoading, setNoteIsLoading] = useState(false);
+  const [isNoteLoading, setIsNoteLoading] = useState(false);
 
   const baseUrl = `http://localhost:3500`;
 
@@ -21,7 +21,7 @@ const Note = ({ accessToken }) => {
 
   const fetchNotes = async () => {
     try {
-      setNoteIsLoading(true);
+      setIsNoteLoading(true);
       const url = `${baseUrl}/notes/session/${roomId}`;
 
       const requestOptions = {
@@ -52,7 +52,7 @@ const Note = ({ accessToken }) => {
           theme: "light",
         });
       }
-      setNoteIsLoading(false);
+      setIsNoteLoading(false);
     } catch (error) {
       toast.error('Failed to fetch notes', {
         position: "top-right",
@@ -64,7 +64,7 @@ const Note = ({ accessToken }) => {
         progress: undefined,
         theme: "light",
       });
-      setNoteIsLoading(false);
+      setIsNoteLoading(false);
     }
   };
 
@@ -88,7 +88,6 @@ const Note = ({ accessToken }) => {
         };
 
         const response = await fetch(url, requestOptions);
-
 
         if (response.status !== 201) {
           const errorMessages = await response.json();
@@ -160,54 +159,57 @@ const Note = ({ accessToken }) => {
     }
   };
 
-
   return (
     <div className='note-container'>
       <ToastContainer />
-
-      <div className='note-body'>
-        {noteList.map((note, index) => (
-          <div className='note-item' key={index}>
-          {editNoteId === note.noteId ? (
-            <>
-              <input
-                type='text'
-                value={editNoteContent}
-                onChange={(e) => setEditNoteContent(e.target.value)}
-              />
-              <button onClick={() => updateNote(note.noteId, editNoteContent)}>
-                Save
-              </button>
-              <button onClick={() => setEditNoteId(null)}>Cancel</button>
-            </>
-          ) : (
-            <>
-              <div className='note-content'>{note.note}</div>
-              <div className='note-meta'>
-                <div className='note-date'>
-                  {new Date(note.timeStamp).toLocaleDateString()}
-                </div>
-                <div className='note-time'>
-                  {new Date(note.timeStamp).toLocaleTimeString()}
-                </div>
-              </div>
-              <div className='note-actions'>
-                <button onClick={() => {
-                  setEditNoteId(note.noteId);
-                  setEditNoteContent(note.note);
-                }}>
-                  <FaEdit />
-                </button>
-                <button onClick={() => deleteNote(note.noteId)}>
-                  <FaTrash />
-                </button>
-              </div>
-            </>
-          )}
+      {isNoteLoading ? (
+        <div className="loader-container">
+          <ClipLoader color="#007AFF" size={50} />
         </div>
-        
-        ))}
-      </div>
+      ) : (
+        <div className='note-body'>
+          {noteList.map((note, index) => (
+            <div className='note-item' key={index}>
+              {editNoteId === note.noteId ? (
+                <>
+                  <input
+                    type='text'
+                    value={editNoteContent}
+                    onChange={(e) => setEditNoteContent(e.target.value)}
+                  />
+                  <button onClick={() => updateNote(note.noteId, editNoteContent)}>
+                    Save
+                  </button>
+                  <button onClick={() => setEditNoteId(null)}>Cancel</button>
+                </>
+              ) : (
+                <>
+                  <div className='note-content'>{note.note}</div>
+                  <div className='note-meta'>
+                    <div className='note-date'>
+                      {new Date(note.timeStamp).toLocaleDateString()}
+                    </div>
+                    <div className='note-time'>
+                      {new Date(note.timeStamp).toLocaleTimeString()}
+                    </div>
+                  </div>
+                  <div className='note-actions'>
+                    <button onClick={() => {
+                      setEditNoteId(note.noteId);
+                      setEditNoteContent(note.note);
+                    }}>
+                      <FaEdit />
+                    </button>
+                    <button onClick={() => deleteNote(note.noteId)}>
+                      <FaTrash />
+                    </button>
+                  </div>
+                </>
+              )}
+            </div>
+          ))}
+        </div>
+      )}
       <div className='note-footer'>
         <input
           type='text'
@@ -229,4 +231,3 @@ const Note = ({ accessToken }) => {
 };
 
 export default Note;
-

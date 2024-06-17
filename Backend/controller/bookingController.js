@@ -249,7 +249,8 @@ const NotificationController = require('./notificationController');
             }
     
             // Check if the booking exists for one-on-one
-            const bookingCollection = db.collection('bookings');
+            const bookingCollection = await this.db.getDB().collection('bookings');
+
             if (sessionMode === 'one-on-one') {
                 const existingBooking = await bookingCollection.findOne({
                     _therapistId: bookingData.therapistId,
@@ -287,23 +288,23 @@ const NotificationController = require('./notificationController');
     
             // Create a new booking object if there's no existing group booking
             const booking = {
-                bookingId: uuidv4(),
-                patientInfo: [{ id: patient._patientId, name: patient._name }],
-                therapistId: bookingData.therapistId,
-                therapistName: bookingData.therapistName,
-                date: bookingData.date,
-                timeSlot: bookingData.timeSlot,
-                sessionType: bookingData.sessionType,
-                sessionMode: sessionMode,
-                sessionLocation: bookingData.sessionLocation
+                _bookingId: uuidv4(),
+                _patientInfo: [{ id: patient._patientId, name: patient._name }],
+                _therapistId: bookingData.therapistId,
+                _therapistName: bookingData.therapistName,
+                _date: bookingData.date,
+                _timeSlot: bookingData.timeSlot,
+                _sessionType: bookingData.sessionType,
+                _sessionMode: sessionMode,
+                _sessionLocation: bookingData.sessionLocation
             };
     
             // Set sessionTitle for group sessions
             if (sessionMode === 'group') {
-                booking.sessionLocation = sessionLocation;
-                booking.sessionTitle = sessionTitle;
+                booking._sessionLocation = sessionLocation;
+                booking._sessionTitle = sessionTitle;
                 if (sessionLocation === 'in-person') {
-                    booking.sessionType = null;
+                    booking._sessionType = null;
                 }
                 if (!sessionTitle) {
                     return res.status(400).json({ message: 'sessionTitle is required for group sessions' });
@@ -316,9 +317,9 @@ const NotificationController = require('./notificationController');
             const reminderDate = new Date();
             reminderDate.setMinutes(reminderDate.getMinutes() + 1);
             const commonNotifDetails = {
-                date: booking.date,
-                time: booking.timeSlot,
-                location: booking.sessionLocation,
+                date: booking._date,
+                time: booking._timeSlot,
+                location: booking._sessionLocation,
             };
     
             const notification_patient = new NotificationController();
@@ -328,6 +329,8 @@ const NotificationController = require('./notificationController');
                 notification_patient.sendNotification(commonNotifDetails, therapist._name, patient._email, patient._name, patient._role); // for patient
                 notification_therapist.sendNotification(commonNotifDetails, patient._name, therapist._email, therapist._name, therapist._role); // for therapist
             });
+
+            console.log('hiiii',booking)
     
             res.status(201).json({ message: 'Booking created successfully', 'booking': booking.bookingId });
         } catch (error) {

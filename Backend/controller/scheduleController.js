@@ -24,10 +24,11 @@ class ScheduleController {
                     groupAvailability: "$_groupAvailability"
                 }});
                 console.log('2')
+                console.log('hi', schedule)
                 if (!schedule) {
                     return res.status(404).json({ 'message': 'schedule not found' });
                 }
-                console.log('hi', schedule)
+                
             res.json(schedule);
         } catch (error) {
             console.error('Error fetching schedule by therapist ID:', error);

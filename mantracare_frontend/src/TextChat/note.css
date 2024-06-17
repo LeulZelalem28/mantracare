@@ -1,70 +1,350 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+}
+
+body {
+  background-color: #f0f2f5;
+  overflow: hidden;
+}
+
+.text-page-container {
+  display: flex;
+  height: 100vh;
+  overflow: hidden;
+}
+
+#therapist-info-container {
+  width: 30%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #fff;
+  padding: 20px;
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+  overflow-y: auto;
+  transition: all 0.3s ease-in-out;
+}
+
+.therapist-box {
+  text-align: center;
+  padding: 30px;
+  border-radius: 15px;
+  background-color: #e9ecef;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+.therapist-box img {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  margin-bottom: 20px;
+  object-fit: cover;
+  border: 4px solid #007AFF;
+}
+
+.therapist-box h2 {
+  color: #007AFF;
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.therapist-box p {
+  color: #555;
+  font-size: 16px;
+  margin-bottom: 20px;
+}
+
+.text-chat-container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  background-color: #fff;
+  overflow: hidden;
+}
+
+.text-chat-header {
+  display: flex;
+  align-items: center;
+  padding: 15px 20px;
+  background-color: #f8f9fa;
+  border-bottom: 1px solid #dee2e6;
+}
+
+.text-chat-header .image-container img {
+  height: 45px;
+  width: 45px;
+  border-radius: 50%;
+  margin-right: 15px;
+  border: 2px solid #007AFF;
+}
+
+.text-chat-body {
+  flex: 1;
+  padding: 20px;
+  overflow-y: auto;
+  background-color: #f0f2f5;
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+.sent-message, .received-message {
+  display: flex;
+  margin-bottom: 10px;
+  box-sizing: border-box;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  max-width: 100%;
+}
+
+.sent-message {
+  justify-content: flex-end;
+}
+
+.received-message {
+  justify-content: flex-start;
+}
+
+.message-box {
+  display: flex;
+  align-items: flex-end;
+  max-width: 70%;
+}
+
+.message-profile-pic img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #007AFF;
+  margin-right: 10px;
+}
+
+.message-content-box {
+  border-radius: 15px;
+  padding: 10px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  animation: slideIn 0.5s ease-in-out;
+  max-width: 100%;
+}
+
+.received-message .message-content-box {
+  background-color: #ffffff;
+}
+
+.sent-message .message-content-box {
+  background-color: #007AFF;
+  color: white;
+  text-align: right;
+}
+
+.message-content-box p {
+  font-size: 16px;
+  margin: 5px 0;
+}
+
+.user-name-message {
+  font-size: 14px;
+  color: #666;
+}
+
+.message-date {
+  font-size: 12px;
+  color: #999;
+  text-align: right;
+}
+
+.text-chat-footer {
+  display: flex;
+  align-items: center;
+  padding: 10px 20px;
+  background-color: #f8f9fa;
+  border-top: 1px solid #dee2e6;
+}
+
+.text-chat-footer input {
+  flex: 1;
+  height: 40px;
+  border: 1px solid #dee2e6;
+  border-radius: 20px;
+  padding: 0 15px;
+  font-size: 16px;
+  margin-right: 10px;
+}
+
+.text-chat-footer button {
+  width: 45px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: #007AFF;
+  color: white;
+  border: none;
+  cursor: pointer;
+  font-size: 18px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: background-color 0.3s;
+}
+
+.text-chat-footer button:hover {
+  background-color: #005bb5;
+}
+
+.loader-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100vw;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: rgba(255, 255, 255, 0.8);
+  z-index: 1000;
+}
+
+@keyframes fadeIn {
+  from {
+      opacity: 0;
+  }
+  to {
+      opacity: 1;
+  }
+}
+
+@keyframes slideIn {
+  from {
+      transform: translateY(20px);
+      opacity: 0;
+  }
+  to {
+      transform: translateY(0);
+      opacity: 1;
+  }
+}
+
+/* Note-taking component styles */
 .note-container {
-    max-height: 100%;
-    width: 40vw;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding: 20px;
-    border-right: 1px solid black;
+  max-height: 100%;
+  width: 40vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 20px;
+  border-right: 1px solid #dee2e6;
+  background-color: #fff;
+}
+
+.note-body {
+  width: 100%;
+  height: 60%;
+  overflow-y: auto;
+  overflow-x: hidden;
+  margin-bottom: 20px;
+}
+
+.note-footer {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px;
+  border-top: 1px solid #dee2e6;
+  background-color: #f8f9fa;
+}
+
+.note-item {
+  width: 100%;
+  padding: 10px;
+  background-color: #f8f9fa;
+  border-radius: 10px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  margin-bottom: 10px;
+  transition: transform 0.2s, background-color 0.2s;
+}
+
+.note-item:hover {
+  transform: scale(1.02);
+  background-color: #eef0f4;
+}
+
+.note-content {
+  font-size: 16px;
+  color: #333;
+  word-wrap: break-word;
+}
+
+.note-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 10px;
+  font-size: 12px;
+  color: #999;
+}
+
+.note-actions {
+  display: flex;
+  gap: 10px;
+}
+
+.note-actions button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #007AFF;
+  font-size: 18px;
+}
+
+.note-footer input {
+  flex: 1;
+  height: 40px;
+  border: 1px solid #dee2e6;
+  border-radius: 20px;
+  padding: 0 15px;
+  font-size: 16px;
+}
+
+.note-footer button {
+  width: 45px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: #007AFF;
+  color: white;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: background-color 0.3s;
+}
+
+.note-footer button:hover {
+  background-color: #005bb5;
+}
+
+/* Media query to hide the therapist info container on smaller screens */
+@media (max-width: 768px) {
+  #therapist-info-container {
+      display: none;
   }
-  
-  .note-body {
-    padding: 20px;
-    width: 100%;
-    height: 60%;
-    overflow-y: auto;
+
+  .text-page-container {
+      flex-direction: column;
   }
-  
-  .note-footer {
-    width: 100%;
-    display: flex;
-    justify-content: start;
-    align-items: start;
-    height: 8%;
+
+  .text-chat-container {
+      width: 100%;
   }
-  
-  .note-item {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    gap: 5px;
-    padding: 10px;
-    background-color: whitesmoke;
+
+  .text-chat-header .image-container img {
+      height: 35px;
+      width: 35px;
+      margin-right: 10px;
   }
-  
-  .note-content {
-    word-wrap: break-word;
-  }
-  
-  .note-meta {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-  
-  .note-date {
-    font-size: 12px;
-  }
-  
-  .note-time {
-    font-size: 12px;
-  }
-  
-  .note-actions {
-    display: flex;
-    gap: 5px;
-  }
-  
-  .note-actions button {
-    background: none;
-    border: none;
-    cursor: pointer;
-  }
-  .note-actions button {
-    background: none;
-    border: none;
-    cursor: pointer;
-    color: blue;
-    font-size: 20px;
-  }
+}
