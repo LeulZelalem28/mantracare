@@ -13,14 +13,13 @@ class PatientController {
     getAllPatients = async (req, res) => {
         try {
             const patientCollection = await this.db.getDB().collection('patients');
-
-            //find and also do projection
-            const patients = await patientCollection.find({},  {
+    
+            const patients = await patientCollection.find({}, {
                 projection: {
-                    _id: 0, 
-                    userId: "$_userId", 
+                    _id: 0,
+                    userId: "$_userId",
                     username: "$_username",
-                    password: "$_password",  
+                    password: "$_password",
                     email: "$_email",
                     name: "$_name",
                     dateOfBirth: "$_dateOfBirth",
@@ -30,13 +29,18 @@ class PatientController {
                     patientId: "$_patientId",
                     role: "$_role",
                 },
-              }).toArray();
+            }).toArray();
+    
+            const count = await patientCollection.countDocuments();
+    
             if (!patients.length) return res.status(204).json({ 'message': 'No patients found' });
-            res.json(patients);
-            } catch (error) {
+            
+            res.json({ count, patients });
+        } catch (error) {
             res.status(500).json({ 'message': 'Failed to fetch patients' });
-            }
-      } 
+        }
+    }
+    
     
       getPatient = async (req, res) => {
         try {

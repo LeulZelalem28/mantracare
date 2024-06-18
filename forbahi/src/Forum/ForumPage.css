@@ -1,0 +1,228 @@
+/* ForumPage.css */
+
+.forum-page-container {
+  display: flex;
+  background-color: #f9fafb;
+  min-height: 100vh;
+}
+
+.forum-sidebar {
+  margin-top: 50px;
+  width: 350px;
+  background-color: inherit;
+  padding: 20px;
+}
+
+.forum-sidebar ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.forum-sidebar ul li {
+  padding: 10px 0;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  transition: background-color 0.3s ease;
+}
+
+.forum-sidebar ul li:hover {
+  background-color: #e0e0e0;
+}
+
+.forum-sidebar ul li svg {
+  margin-right: 10px; /* Space between icon and text */
+}
+
+.forum-sidebar ul li.category {
+  padding-left: 30px; /* Increased padding for categories */
+}
+
+.forum-content {
+  flex: 1;
+  padding: 20px;
+}
+
+.forum-search-bar {
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: center;
+}
+
+.forum-search-bar input {
+  width: 50%;
+  padding: 12px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 25px;
+  outline: none;
+  box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+.forum-search-bar input:focus {
+  border-color: #007bff;
+  box-shadow: 0px 3px 6px rgba(0, 123, 255, 0.3);
+}
+
+.forum-search-bar button {
+  padding: 12px 20px;
+  font-size: 16px;
+  border: none;
+  border-radius: 25px;
+  background-color: #007bff;
+  color: #fff;
+  cursor: pointer;
+  outline: none;
+  transition: all 0.3s ease;
+  box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.1);
+}
+
+.forum-search-bar button:hover {
+  background-color: #0056b3;
+  box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+.forum-search-bar button:disabled {
+  cursor: not-allowed;
+  background-color: #ccc;
+  box-shadow: none;
+}
+
+.forum-open-modal-button {
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-bottom: 20px;
+}
+
+.forum-open-modal-button:hover {
+  background-color: #0056b3;
+}
+
+.create-forum-container {
+  margin-bottom: 20px;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.create-forum-form label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.create-forum-form input,
+.create-forum-form textarea,
+.create-forum-form select {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.create-forum-form button {
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.create-forum-form button:hover {
+  background-color: #0056b3;
+}
+
+.forum-list {
+  margin-top: 20px;
+}
+
+/* Modal Styles */
+.forum-modal {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+.forum-modal-content {
+  background-color: #fff;
+  padding: 20px;
+  border: 1px solid #888;
+  border-radius: 10px;
+  width: 80%;
+  max-width: 500px;
+  position: relative;
+}
+
+.forum-close {
+  position: absolute;
+  top: 10px;
+  right: 20px;
+  font-size: 28px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.forum-close:hover,
+.forum-close:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.forum-loader {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 2;
+}
+
+/* Dropdown Styles */
+.forum-dropdown {
+  margin-top: 50px;
+  padding: 20px;
+  background-color: inherit;
+  display: none; /* Initially hidden */
+}
+
+@media (max-width: 768px) {
+  .forum-sidebar {
+    display: none; /* Hide sidebar */
+  }
+
+  .forum-dropdown {
+    display: block; /* Show dropdown */
+    width: 100%;
+  }
+}
+
+.forum-dropdown select {
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 25px;
+  outline: none;
+  box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.forum-dropdown select:hover,
+.forum-dropdown select:focus {
+  border-color: #007bff;
+  box-shadow: 0px 3px 6px rgba(0, 123, 255, 0.3);
+}

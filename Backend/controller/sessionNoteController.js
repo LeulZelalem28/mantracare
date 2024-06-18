@@ -69,31 +69,33 @@ class SessionNoteController {
     createNote = async (req, res) => {
         try {
             const noteData = req.body;
-
+    
             const sessionNoteCollection = await this.db.getDB().collection('notes');
-
-            //check for missing fields  // decide whether the note taking will only be for therapist or patient
-            if( !noteData.sessionId || !noteData.note) {
-                return res.status(400).json({ message: 'Missing required fields! '})
+    
+            // Check for missing fields
+            if (!noteData.sessionId || !noteData.note) {
+                throw new Error('Missing required fields: sessionId and note');
             }
-
+    
             const sessionNote = new SessionNote();
-            
-            sessionNote.noteId =  uuidv4();
+    
+            sessionNote.noteId = uuidv4();
             sessionNote.sessionId = noteData.sessionId;
             sessionNote.note = noteData.note;
             sessionNote.creatorId = noteData.userId;
             sessionNote.timeStamp = new Date();
-
-            //insert in database
+    
+            // Insert in the database
             await sessionNoteCollection.insertOne(sessionNote);
-            console.log(sessionNote)
+            console.log(sessionNote);
             res.status(201).json({ message: 'Note created successfully', 'createdNote': sessionNote });
-
+    
         } catch (error) {
-            res.status(500).json({ message: 'Failed to create note'});
+            console.error('Failed to create note:', error);
+            res.status(400).json({ message: error.message }); // Send the error message as the response
         }
     }
+    
 
     updateNote = async (req, res) =>{
         try {

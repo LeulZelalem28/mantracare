@@ -1,0 +1,81 @@
+/* AdminDashboard.css */
+
+.admin-dashboard {
+  display: flex;
+  height: 100vh;
+}
+
+.admin-sidebar {
+  background-color: #007bff;
+  color: #fff;
+  width: 300px;
+  padding: 20px;
+  box-sizing: border-box;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  overflow-y: auto;
+  transition: transform 0.3s ease;
+  transform: translateX(0); /* Ensure sidebar is visible by default */
+}
+
+.admin-sidebar.closed {
+  transform: translateX(-100%);
+}
+
+.admin-sidebar-item {
+  background: none;
+  border: none;
+  color: #fff;
+  font-size: 1rem;
+  cursor: pointer;
+  display: block;
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+.admin-sidebar-item:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.admin-sidebar-item.active {
+  font-weight: bold;
+}
+
+.admin-content {
+  flex: 1;
+  margin-left: 300px;
+  padding: 20px;
+  background-color: #f8f9fa;
+  transition: margin-left 0.3s ease;
+}
+
+.hamburger {
+  display: none;
+  font-size: 2rem;
+  cursor: pointer;
+  position: fixed;
+  top: 10px;
+  left: 10px;
+  z-index: 1000;
+}
+
+@media (max-width: 768px) {
+  .admin-sidebar {
+    transform: translateX(-100%);
+    width: 200px
+  }
+
+  .admin-sidebar.open {
+    transform: translateX(0);
+  }
+
+  .admin-content {
+    margin-left: 0;
+  }
+
+  .hamburger {
+    display: block;
+  }
+}

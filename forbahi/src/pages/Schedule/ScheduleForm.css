@@ -1,0 +1,56 @@
+
+.schedule-form {
+    display: flex;
+    flex-direction: column;
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background-color: #f4f7fc; 
+  }
+  
+  .schedule-form h1 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #4a90e2; 
+  }
+  
+  .schedule-form label {
+    font-weight: bold;
+    margin-top: 10px;
+    color: #4a90e2; 
+  }
+  
+  .schedule-form input,
+  .schedule-form select {
+    padding: 8px;
+    margin-top: 5px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    width: 100%;
+  }
+  
+  .availability-section {
+    margin-bottom: 20px;
+  }
+  
+  .time-slot {
+    display: flex;
+    gap: 10px;
+  }
+  
+  .schedule-form button {
+    padding: 10px;
+    background-color: #4a90e2; 
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .schedule-form button:hover {
+    background-color: #357ebd; 
+  }
+  

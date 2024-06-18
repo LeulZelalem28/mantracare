@@ -1,0 +1,68 @@
+/* PatientsPage.css */
+.admin-patients-page {
+  padding: 20px;
+  background-color: #f4f4f9;
+  font-family: 'Arial', sans-serif;
+}
+
+.admin-patients-page h2 {
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.admin-patients-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.admin-patients-item {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 20px;
+  margin-bottom: 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+.admin-patients-item:hover {
+  transform: scale(1.02);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.admin-patients-item-info p {
+  margin: 5px 0;
+}
+
+.admin-patients-delete-button {
+  background-color: #ff4d4d;
+  border: none;
+  color: white;
+  cursor: pointer;
+  padding: 10px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.3s ease;
+}
+
+.admin-patients-delete-button:hover {
+  background-color: #e60000;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

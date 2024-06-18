@@ -1,0 +1,163 @@
+.forum-card {
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s;
+  margin-bottom: 20px;
+  padding: 15px;
+  background-color: #fff;
+}
+
+.forum-card .forum-title {
+  cursor: pointer;
+  margin: 0 0 10px 0;
+  font-size: 1.2em;
+  text-decoration: none;
+  color: #333;
+}
+
+.forum-card .forum-title:hover {
+  text-decoration: underline;
+}
+
+.forum-card h3 {
+  margin: 0 0 10px 0;
+  font-size: 1.2em;
+}
+
+.forum-card p {
+  margin: 0 0 10px 0;
+  color: #666;
+}
+
+.forum-meta {
+  padding-left: 10px;
+  margin-top: 50px;
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.9em;
+  color: #999;
+}
+
+.forum-meta span {
+  cursor: pointer;
+}
+
+.forum-meta div span {
+  margin-right: 10px;
+  font-size: 20px;
+  border: 2px solid #ccc;
+  padding: 2px;
+  border-radius: 5px;
+}
+
+.forum-user-info {
+  display: flex;
+}
+
+.forum-data-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 30px;
+}
+
+.forum-user-info img {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-right: 20px;
+}
+
+.forum-user-info :last-child {
+  font-size: 12px;
+  margin-left: 70px;
+}
+
+.forum-actions {
+  display: flex;
+  gap: 10px;
+  cursor: pointer;
+}
+
+.forum-action-icon {
+  cursor: pointer;
+  font-size: 1.2em;
+  color: #007bff;
+  transition: color 0.3s ease;
+}
+
+.forum-action-icon:hover {
+  color: #0056b3;
+}
+
+.forum-posts {
+  border-top: 1px solid #ccc;
+  margin-top: 30px;
+  padding-top: 20px;
+}
+
+.create-forum-post input {
+  width: 90%;
+  height: 40px;
+}
+
+.create-forum-post button {
+  width: 10%;
+  height: 40px;
+  background-color: #ccc;
+  border: none;
+  color: #007bff;
+}
+
+.create-forum-post button:hover {
+  background-color: #007bff;
+  color: #ccc;
+  cursor: pointer;
+}
+
+.create-forum-post {
+  margin-bottom: 20px;
+}
+
+.forum-post-user-info {
+  display: flex;
+}
+
+.forum-post {
+  border-bottom: 1px solid #ccc;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+.forum-post-user-info img {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-right: 20px;
+}
+
+.forum-post-user-details {
+  display: flex;
+  flex-direction: column;
+}
+
+.forum-post-username {
+  color: black;
+  font-weight: bold;
+}
+
+.forum-post-date {
+  font-size: 12px;
+  color: black;
+}
+
+.forum-post-body {
+  padding-left: 30px;
+}
+
+.forum-post-user-details {
+  margin-bottom: 30px;
+}

@@ -42,6 +42,7 @@ class MessageController {
 
     createMessage = async (req, res) => {
         try{
+            console.log('message')
             const messageData = req.body;
 
             const messageCollection = await this.db.getDB().collection('messages');

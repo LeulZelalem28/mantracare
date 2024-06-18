@@ -1,0 +1,19 @@
+.dropdown-content a {
+  display: block;
+  text-align: center;
+  background-color: white; /* Primary color, adjust as needed */
+  color: white;
+  padding: 1px;
+  margin: 2px 3px;
+  border-radius: 15px; /* Rounded borders */
+  text-decoration:none;
+  font-size: 15px; /* Removes underline */
+  font-weight: 400; /* Bold font */
+  transition: background-color 0.3s; /* Smooth transition for hover effect */
+  height: 86px; /* Adjust height as needed */
+  width: 100px; 
+}
+
+.dropdown-content a:hover {
+  background-color: #0056b3; /* Darker shade on hover, adjust as needed */
+}

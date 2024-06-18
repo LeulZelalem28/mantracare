@@ -1,0 +1,103 @@
+/* UpdateResourcePage.css */
+
+.update-resource-page {
+    background: linear-gradient(to right, #e0e0e0, #f5f5f5);
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    font-family: 'Arial', sans-serif;
+    height: 100vh;
+  }
+  
+  .update-resource-page h2 {
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+    text-align: center; /* Center align the heading */
+  }
+  
+  .update-resource-page form {
+    background: white;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    animation: fadeIn 1s ease-in-out;
+  }
+  
+  /* Fade in animation */
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(-20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  .update-resource-page label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+    color: #555;
+  }
+  
+  .update-resource-page input,
+  .update-resource-page textarea {
+    width: 100%;
+    padding: 1rem;
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 1rem;
+    resize: vertical; /* Allow vertical resizing of textarea */
+  }
+  
+  .update-resource-page input:focus,
+  .update-resource-page textarea:focus {
+    border-color: #90caf9;
+    outline: none;
+  }
+  
+  .update-resource-page textarea {
+    height: 200px;
+  }
+  
+  .update-resource-page button[type="submit"] {
+    width: 100%;
+    padding: 1rem;
+    background-color: #0426FA;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .update-resource-page button[type="submit"]:hover {
+    background-color: #001F80;
+  }
+  
+  .update-resource-page .message {
+    margin-bottom: 10px;
+    padding: 10px;
+    background-color: #f2dede;
+    border: 1px solid #ebccd1;
+    border-radius: 5px;
+    color: #a94442;
+  }
+  
+  /* Loading spinner */
+  .resource-detail-page-spinner {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 200px;
+  }
+  
+  .resource-detail-page-spinner > div {
+    margin-top: -50px;
+  }
+  

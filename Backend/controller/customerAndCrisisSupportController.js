@@ -14,7 +14,7 @@ class CustomerandCrisisSupportController {
         try {
             const customerAndCrisisSupportCollection = await this.db.getDB().collection('customerandcrisissupports');
 
-            //find and also do projection
+            // Find and also do projection
             const customerAndCrisisSupport = await customerAndCrisisSupportCollection.find({},  {
                 projection: {
                     _id: 0, 
@@ -30,13 +30,16 @@ class CustomerandCrisisSupportController {
                     customerSupportId: "$_customerSupportId",
                     role: "$_role",
                 },
-              }).toArray();
+            }).toArray();
+
+            const count = customerAndCrisisSupport.length;
+
             if (!customerAndCrisisSupport.length) return res.status(204).json({ 'message': 'No customerAndCrisisSupport found' });
-            res.json(customerAndCrisisSupport);
-            } catch (error) {
+            res.json({ count, customerAndCrisisSupport });
+        } catch (error) {
             res.status(500).json({ 'message': 'Failed to fetch customerAndCrisisSupport' });
-            }
-      } 
+        }
+    }
     
       getCustomerAndCrisisSupport = async (req, res) => {
         try {
@@ -73,6 +76,7 @@ class CustomerandCrisisSupportController {
         
     createCustomerAndCrisis = async (req, res) => {
         try {
+            console.log('hi')
             //data we get from request
             const customerAndCrisisSupportData = req.body;
             
@@ -129,6 +133,7 @@ class CustomerandCrisisSupportController {
             res.status(201).json({ 'message': 'CustomerAndCrisisSupport created successfully' });
             } catch (error) {
                 res.status(500).json({ 'message': 'Failed to create customerAndCrisisSupport' });
+                console.log(error)
             }
       }
         

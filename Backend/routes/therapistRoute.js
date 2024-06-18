@@ -3,11 +3,16 @@ const router = express.Router();
 const multer = require('multer');
 const TherapistController= require('../controller/therapistController');
 const ROLES_LIST = require('../config/roles_list');
-const upload = multer().fields([
+const upload = multer({
+    limits: {
+        fileSize: 500 * 1024 * 1024 // 10 MB limit
+    },
+    storage: multer.memoryStorage()
+}).fields([
     { name: 'profilePic', maxCount: 1 },
     { name: 'educationCertificate', maxCount: 1 },
     { name: 'license', maxCount: 1 }
-  ]);
+]);
 
 
 const therapistRouter = (db) => {
@@ -30,7 +35,10 @@ const therapistRouter = (db) => {
         .get(therapistController.getTherapistBySpecialization);
 
     router.route('/userId/:id')
-        .get(therapistController.getTherapistByUserId)
+        .get(therapistController.getTherapistByUserId);
+
+    router.route('/number')
+        .get(therapistController.therapistNumber);
 
     router.route('/unapproved')
         .get(therapistController.getUnapprovedTherapists);

@@ -57,6 +57,17 @@ class TherapistController {
             console.log(error)
         }
     };
+
+    therapistNumber = async (req, res) => {
+        try {
+            const therapistCollection = await this.db.getDB().collection('therapists');
+            const therapistCount = await therapistCollection.countDocuments({ _approved: true });
+            res.json({ count: therapistCount });
+        } catch (error) {
+            res.status(500).json({ 'message': 'Failed to fetch therapist count' });
+            console.log(error);
+        }
+    };
     
     getTherapistById = async (req, res) => {
         try {
@@ -426,12 +437,14 @@ class TherapistController {
         
     updateTherapist = async (req, res) => {
         try {
+            
             if (!req?.params?.id) {
                 return res.status(400).json({ 'message': 'ID parameter is required' });
             }
         
             const therapistId = req.params.id;
             const therapistData = req.body;
+            console.log(therapistData)
         
             const patientCollection = await this.db.getDB().collection('patients');
             const therapistCollection = await this.db.getDB().collection('therapists');
@@ -508,6 +521,7 @@ class TherapistController {
 
             res.json({ 'message': 'Therapist updated successfully', 'updatedPatient': updatedTherapistData });
             } catch (error) {
+            console.log(error)
             res.status(500).json({ 'message': 'Failed to update therapist' });
             }
       }

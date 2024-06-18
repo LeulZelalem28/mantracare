@@ -1,0 +1,82 @@
+/* CreateCustomerPage.css */
+
+body {
+  background-color: #f7f8fc;
+  font-family: 'Arial', sans-serif;
+}
+
+.admin-create-cus {
+  max-width: 600px;
+  margin: 50px auto;
+  padding: 20px;
+  background-color: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.admin-create-cus h2 {
+  font-size: 28px;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.admin-create-cus-form-group {
+  margin-bottom: 20px;
+}
+
+.admin-create-cus-form-group label {
+  font-size: 16px;
+  font-weight: 600;
+  color: #333;
+  display: block;
+  margin-bottom: 8px;
+}
+
+.admin-create-cus-form-group input[type='text'],
+.admin-create-cus-form-group input[type='password'],
+.admin-create-cus-form-group input[type='email'],
+.admin-create-cus-form-group input[type='tel'],
+.admin-create-cus-form-group input[type='date'] {
+  width: 100%;
+  padding: 12px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #f7f8fc;
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.admin-create-cus-form-group input[type='text']:focus,
+.admin-create-cus-form-group input[type='password']:focus,
+.admin-create-cus-form-group input[type='email']:focus,
+.admin-create-cus-form-group input[type='tel']:focus,
+.admin-create-cus-form-group input[type='date']:focus {
+  outline: none;
+  border-color: #007bff;
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+
+.admin-create-cus-btn {
+  display: inline-block;
+  width: 100%;
+  background-color: #007bff;
+  color: #ffffff;
+  padding: 12px;
+  font-size: 16px;
+  font-weight: bold;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  text-align: center;
+}
+
+.admin-create-cus-btn:disabled {
+  background-color: #cccccc;
+}
+
+.admin-create-cus-btn:hover:enabled {
+  background-color: #0056b3;
+}

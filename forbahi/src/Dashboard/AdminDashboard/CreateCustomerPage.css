@@ -1,0 +1,65 @@
+/* CreateCustomerPage.css */
+
+.admin-create-cus {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .admin-create-cus h2 {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+  }
+  
+  .admin-create-cus-form-group {
+    margin-bottom: 20px;
+  }
+  
+  .admin-create-cus-form-group label {
+    font-size: 18px;
+    font-weight: bold;
+    display: block;
+    margin-bottom: 8px;
+  }
+  
+  .admin-create-cus-form-group input[type='text'],
+  .admin-create-cus-form-group input[type='password'],
+  .admin-create-cus-form-group input[type='email'],
+  .admin-create-cus-form-group input[type='tel'],
+  .admin-create-cus-form-group input[type='date'] {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  .admin-create-cus-form-group input[type='text']:focus,
+  .admin-create-cus-form-group input[type='password']:focus,
+  .admin-create-cus-form-group input[type='email']:focus,
+  .admin-create-cus-form-group input[type='tel']:focus,
+  .admin-create-cus-form-group input[type='date']:focus {
+    outline: none;
+    border-color: #007bff;
+  }
+  
+  .admin-create-cus-btn {
+    display: inline-block;
+    background-color: #007bff;
+    color: #fff;
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .admin-create-cus-btn:hover {
+    background-color: #0056b3;
+  }
+  
