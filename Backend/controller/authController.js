@@ -86,7 +86,7 @@ class AuthController {
                     process.env.ACCESS_TOKEN_SECRET,
                     { expiresIn: '1d'}
                 );
-                res.json({ accessToken: accessToken, role: role, username: foundUser._username, userId: foundUser._user });
+                res.json({ accessToken: accessToken, role: role, username: foundUser._username, userId: foundUser._userId });
             } else {
                 return res.status(401).json({ message: 'incorrect password'});
             }

@@ -1,0 +1,190 @@
+/* Container for the entire blog page */
+.resource-page-container {
+    padding: 40px;
+    background-color: #f9f9f9;
+    min-height: 100vh;
+    font-family: 'Arial', sans-serif;
+}
+
+/* Search bar container */
+.resource-page-search-bar {
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: center;
+}
+
+/* Styling for the search input */
+.resource-page-search-bar input {
+    width: 50%;
+    padding: 12px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 25px;
+    outline: none;
+    box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+/* Input focus effect */
+.resource-page-search-bar input:focus {
+    border-color: #007BFF;
+    box-shadow: 0px 3px 6px rgba(0, 123, 255, 0.3);
+}
+
+/* Styling for the search button */
+.resource-page-search-bar button {
+    padding: 12px 20px; /* Adjust padding for better appearance */
+    font-size: 16px;
+    border: none; /* Remove border */
+    border-radius: 25px;
+    background-color: #007BFF; /* Set background color */
+    color: #fff; /* Set text color */
+    cursor: pointer;
+    outline: none;
+    transition: all 0.3s ease;
+    box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Hover effect on the search button */
+.resource-page-search-bar button:hover {
+    background-color: #0056b3; /* Darker shade of blue on hover */
+    box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* Disabled state for the search button */
+.resource-page-search-bar button:disabled {
+    cursor: not-allowed;
+    background-color: #ccc; /* Light gray background when disabled */
+    box-shadow: none;
+}
+
+/* Loader container */
+.resource-page-loader {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 300px;
+}
+
+/* Resource list container */
+.resource-page-resource-list {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* Individual resource card styling */
+.resource-page-resource-card {
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    text-decoration: none; /* Remove underline from resource card links */
+    color: inherit; /* Inherit text color from parent */
+}
+
+/* Hover effect on resource cards */
+.resource-page-resource-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* Pagination container */
+.resource-page-pagination {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+    gap: 10px; /* Add space between buttons */
+}
+
+/* Pagination buttons styling */
+.resource-page-pagination button {
+    padding: 10px 20px;
+    font-size: 16px;
+    border: 1px solid #007BFF;
+    background-color: #007BFF;
+    color: #fff;
+    cursor: pointer;
+    border-radius: 25px;
+    outline: none;
+    transition: all 0.3s ease;
+    box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Disabled state for pagination buttons */
+.resource-page-pagination button:disabled {
+    cursor: not-allowed;
+    background-color: #ccc;
+    border-color: #ccc;
+    box-shadow: none;
+}
+
+/* Hover effect on pagination buttons */
+.resource-page-pagination button:not(:disabled):hover {
+    background-color: #0056b3;
+    border-color: #0056b3;
+    box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* Resource card content styling */
+.resource-page-resource-card h2 {
+    margin-top: 0;
+    color: #333;
+}
+
+.resource-page-resource-card p {
+    color: #666;
+}
+
+.resource-page-resource-card .meta {
+    font-size: 14px;
+    color: #999;
+}
+
+/* Remove underline from links inside resource cards */
+.resource-page-resource-card a {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* Remove underline from resource card title */
+.resource-page-resource-card h2 a {
+    text-decoration: none;
+    color: inherit;
+}
+
+
+.resource-page-resource-actions {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 10px;
+  }
+  
+  .resource-page-resource-actions button {
+    margin-left: 10px;
+    padding: 8px 16px;
+    font-size: 14px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  .resource-page-resource-actions button:first-child {
+    background-color: #dc3545; /* Red color for Delete button */
+    color: white;
+  }
+  
+  .resource-page-resource-actions button:last-child {
+    background-color: #007bff; /* Blue color for Update button */
+    color: white;
+  }
+  
+  .resource-page-resource-actions button:hover {
+    opacity: 0.8;
+  }
+  
+  

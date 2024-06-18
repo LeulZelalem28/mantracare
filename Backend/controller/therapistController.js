@@ -75,7 +75,7 @@ class TherapistController {
                 return res.status(400).json({ 'message': 'ID parameter is required' });
             }
             const therapistCollection = await this.db.getDB().collection('therapists');
-            const therapist = await therapistCollection.findOne({ _therapistId: req.params.id, _approved: true }, {
+            const therapist = await therapistCollection.findOne({ _therapistId: req.params.id }, {
                 projection: {
                     _id: 0,
                     userId: "$_userId",

@@ -1,0 +1,209 @@
+#onlineAppointmentPage h1 {
+    color: rgb(4, 4, 230);
+}
+
+#onlineAppointmentPageContainer{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: start;
+}
+
+.appointments-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    margin-top: 20px;
+  }
+  
+  .appointment-box {
+    border: 1px solid #0404e6;
+    background-color: rgb(253, 253, 253);
+    box-shadow: inset;
+    border-radius: 8px ;
+    padding: 10px;
+    width: 450px; 
+    position: relative;
+    margin: 5px;
+    
+  }
+
+  .appointment-box .buttons{
+    display: flex;
+    justify-content: start;
+    margin-top: 10px; /* Add some top margin */
+  }
+  
+
+  .appointment-box .session-buttons button {
+    margin-right: 25px;
+    margin-left: 25px;
+    padding: 5px;
+    background-color: blue;
+    color: white;
+    font-size: 20px;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    box-shadow: 1px 1px 1px 1px black;
+  }
+
+  .appointment-box .session-buttons button:hover {
+    background-color: darkblue;
+  }
+
+  .appointment-box .session-buttons button:active {
+      background-color: navy;
+      transform: translateY(2px);
+      box-shadow: 1px 1px 1px 1px black inset;
+  }
+
+  .appointment-box .therapist-info span{
+    color: blue;
+    font-weight: bold;
+    font-size: 20px;
+  }
+  .appointment-box .patient-info p span{
+    color: blue;
+    font-weight: bold;
+    font-size: 20px;
+  }
+
+  .appointment-box .patient-info p {
+    font-size: 20px;
+  }
+
+  .appointment-box .title-info span{
+    color: black;
+    font-weight: bold;
+    font-size: 20px;
+    font-size: 20px;
+    
+  }
+
+  .appointment-box .title-info  {
+    margin-bottom: 10px;
+  }
+
+
+  .appointment-box .therapist-info {
+    font-size: 20px;
+  }
+
+  .appointment-box .date-info {
+    margin-top: 20px;
+  }
+
+  .appointment-box .date-info span {
+    font-weight: bold;
+  }
+
+  .appointment-box .time-info span {
+    font-weight: bold;
+  }
+
+  .appointment-box .sessionType-info {
+    margin-top: 20px;
+  }
+
+  .appointment-box .sessionType-info span {
+    font-weight: bold;
+  }
+
+  .appointment-box .sessionMode-info {
+    margin-bottom: 30px;
+  }
+
+  .appointment-box .sessionMode-info span {
+    font-weight: bold;
+  }
+  
+  #cancel-appointment-btn {
+    position: absolute;
+    bottom: 10px; 
+    right: 10px; 
+    background-color: rgb(253, 22, 22);
+    color: white;
+    /* text-shadow: 0px 0px 0px 50px black; */
+    border: none;
+    border-radius: 5px;
+    font-size: 15px;
+    padding: 5px;
+    box-shadow: 1px 1px 1px 1px black;
+    cursor: pointer;
+  }
+  
+  #cancel-appointment-btn:hover {
+    color: black;
+    
+  }
+
+  #cancel-appointment-btn:active {
+    background-color: darkred; /* Change background color to show active state */
+    transform: translateY(2px); /* Slightly move the button down */
+    box-shadow: 1px 1px 1px 1px black inset; 
+  }
+/* OnlineAppointmentsPage.css */
+.appointment-button-group {
+    display: flex;
+    gap: 10px;
+  }
+  
+  .appointment-button-group button {
+    padding: 10px 20px;
+    border: none;
+    background: none;
+    position: relative;
+    font-size: 16px;
+    cursor: pointer;
+    outline: none;
+  }
+  
+  .appointment-button-group button::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 2px;
+    background-color: transparent;
+    transition: background-color 0.8s ease, width 0.8s ease;
+  }
+  
+  .appointment-button-group button.selected::after {
+    background-color: blue;
+    width: 100%;
+  }
+
+  #onlineAppointmentPageSpinner {
+    margin-top: 50px; /* Add some spacing between the spinner and other content */
+  }
+
+  .appointment-box.canceled,
+.appointment-box.passed {
+    background-color: lightgray;
+    color: gray;
+    position: relative;
+}
+
+.appointment-box .status-label {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: red;
+    color: white;
+    padding: 5px;
+    border-radius: 5px;
+    font-size: 12px;
+}
+
+.appointment-box.passed .status-label {
+    background-color: gray;
+}
+
+
+  /* .appointment-button-group button:hover::after {
+    background-color: lightblue;
+    width: 100%;
+  } */
+  

@@ -76,7 +76,7 @@ class CustomerandCrisisSupportController {
         
     createCustomerAndCrisis = async (req, res) => {
         try {
-            console.log('hi')
+            
             //data we get from request
             const customerAndCrisisSupportData = req.body;
             
