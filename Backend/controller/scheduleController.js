@@ -70,7 +70,7 @@ class ScheduleController {
     
             await scheduleCollection.insertOne(schedule);
     
-            res.status(201).json({ 'message': 'Schedule created successfully' });
+            res.status(201).json({ 'message': 'Schedule created successfully', 'therapist': schedule });
         } catch (error) {
             console.error('Error creating schedule:', error);
             res.status(500).json({ 'message': 'Failed to create schedule' });

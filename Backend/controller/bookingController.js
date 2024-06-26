@@ -6,6 +6,73 @@ const NotificationController = require('./notificationController');
     constructor (db) {
         this.db = db;
     } 
+    getBookingsByType = async (req, res) => {
+        try {
+            const bookingCollection = await this.db.getDB().collection('bookings');
+
+            const bookingsByType = await bookingCollection.aggregate([
+                {
+                    $group: {
+                        _id: "$_sessionType",
+                        count: { $sum: 1 }
+                    }
+                },
+                { $sort: { _id: 1 } } // Sort by sessionType ascending
+            ]).toArray();
+
+            if (!bookingsByType.length) {
+                return res.status(204).json({ message: 'No bookings found' });
+            }
+
+            res.json(bookingsByType);
+        } catch (error) {
+            console.error('Error fetching bookings by type:', error);
+            res.status(500).json({ message: 'Failed to fetch bookings by type' });
+        }
+    }
+    getAppointmentsCountByDate = async (req, res) => {
+        try {
+            const bookingCollection = await this.db.getDB().collection('bookings');
+    
+            const appointmentsByDate = await bookingCollection.aggregate([
+                {
+                    $addFields: {
+                        _date: {
+                            $dateFromString: {
+                                dateString: "$_date",
+                                format: "%Y-%m-%d",
+                                onError: null, // Set to null if parsing fails
+                                onNull: null // Set to null if field is missing
+                            }
+                        }
+                    }
+                },
+                {
+                    $match: {
+                        _date: { $ne: null } // Ensure _date is not null after conversion
+                    }
+                },
+                {
+                    $group: {
+                        _id: { $dateToString: { format: "%Y-%m-%d", date: "$_date" } },
+                        count: { $sum: 1 }
+                    }
+                },
+                { $sort: { _id: 1 } } // Sort by date ascending
+            ]).toArray();
+    
+            if (!appointmentsByDate.length) {
+                return res.status(204).json({ message: 'No appointments found' });
+            }
+    
+            res.json(appointmentsByDate);
+        } catch (error) {
+            console.error('Error fetching appointments count by date:', error);
+            res.status(500).json({ message: 'Failed to fetch appointments count' });
+        }
+    }
+    
+
     getBookingsByLocation = async(req, res) => {
         try {
 
@@ -329,8 +396,6 @@ const NotificationController = require('./notificationController');
                 notification_patient.sendNotification(commonNotifDetails, therapist._name, patient._email, patient._name, patient._role); // for patient
                 notification_therapist.sendNotification(commonNotifDetails, patient._name, therapist._email, therapist._name, therapist._role); // for therapist
             });
-
-            console.log('hiiii',booking)
     
             res.status(201).json({ message: 'Booking created successfully', 'booking': booking.bookingId });
         } catch (error) {

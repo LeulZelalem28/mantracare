@@ -43,6 +43,8 @@ const therapistRouter = (db) => {
     router.route('/unapproved')
         .get(therapistController.getUnapprovedTherapists);
 
+    router.get('/unapproved/:id', therapistController.getUnapprovedTherapistById);
+
     router.route('/approve/:id')
         .put(therapistController.approveTherapist);
     

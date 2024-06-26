@@ -8,6 +8,7 @@ class AuthController {
 
     handleLogin = async (req, res) => {
         try {
+            
             const loginData = req.body;
             const loginMode = req.body.loginMode
             let foundUser
@@ -86,6 +87,7 @@ class AuthController {
                     process.env.ACCESS_TOKEN_SECRET,
                     { expiresIn: '1d'}
                 );
+                console.log(foundUser._userId)
                 res.json({ accessToken: accessToken, role: role, username: foundUser._username, userId: foundUser._userId });
             } else {
                 return res.status(401).json({ message: 'incorrect password'});

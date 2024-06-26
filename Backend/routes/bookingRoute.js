@@ -10,6 +10,11 @@ const bookingRouter = (db) => {
     router.route('/')
     .post(bookingController.createBooking);
 
+    router.route('/count')
+    .get(bookingController.getAppointmentsCountByDate)
+    router.route('/by-type')
+    .get(bookingController.getBookingsByType)
+
     router.route('/:id/cancel')
     .put(bookingController.cancelBooking);
 

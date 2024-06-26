@@ -2,6 +2,7 @@ const Therapist = require('../model/Therapist');
 const { v4: uuidv4 } = require('uuid');
 const bcrypt = require('bcrypt');
 const multer = require('multer');
+const NotificationController = require('./notificationController');
 // Set up multer storage
 const storage = multer.memoryStorage();
 const upload = multer({ storage });
@@ -580,6 +581,52 @@ class TherapistController {
                 res.status(500).json({ 'message': 'Failed to fetch unapproved therapists' });
             }
         }
+
+        getUnapprovedTherapistById = async (req, res) => {
+            try {
+                if (!req.params.id) {
+                    return res.status(400).json({ message: 'ID parameter is required' });
+                }
+        
+                const therapistCollection = await this.db.getDB().collection('therapists');
+                const therapist = await therapistCollection.findOne(
+                    { _therapistId: req.params.id, _approved: false },
+                    {
+                        projection: {
+                            _id: 0,
+                            userId: "$_userId",
+                            username: "$_username",
+                            password: "$_password",
+                            email: "$_email",
+                            name: "$_name",
+                            dateOfBirth: "$_dateOfBirth",
+                            phoneNumber: "$_phoneNumber",
+                            registrationDate: "$_registrationDate",
+                            profilePic: "$_profilePic",
+                            therapistId: "$_therapistId",
+                            role: "$_role",
+                            address: "$_address",
+                            specialization: "$_specialization",
+                            experience: "$_experience",
+                            education: "$_education",
+                            description: "$_description",
+                            approved: "$_approved",
+                            educationCertificate: "$_educationCertificate",
+                            license: "$_license"
+                        },
+                    }
+                );
+        
+                if (!therapist) {
+                    return res.status(404).json({ message: 'Unapproved therapist not found' });
+                }
+        
+                res.json(therapist);
+            } catch (error) {
+                res.status(500).json({ message: 'Failed to fetch unapproved therapist' });
+            }
+        };
+        
     
         approveTherapist = async (req, res) => {
             try {
@@ -588,6 +635,7 @@ class TherapistController {
                 }
     
                 const therapistCollection = await this.db.getDB().collection('therapists');
+                const therapist = await therapistCollection.findOne({_therapistId: req.params.id})
                 const result = await therapistCollection.updateOne(
                     { _therapistId: req.params.id },
                     { $set: { _approved: true } }
@@ -596,7 +644,11 @@ class TherapistController {
                 if (result.modifiedCount === 0) {
                     return res.status(404).json({ 'message': 'Therapist not found or already approved' });
                 }
-    
+
+
+                const notif = new NotificationController()
+                notif.sendTherapistApprovalNotification(therapist._therapistId, therapist._name)
+
                 res.json({ 'success': 'Therapist approved successfully' });
             } catch (error) {
                 res.status(500).json({ 'message': 'Failed to approve therapist' });

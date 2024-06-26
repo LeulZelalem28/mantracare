@@ -78,8 +78,7 @@ class CustomerandCrisisSupportController {
         try {
             
             //data we get from request
-            const customerAndCrisisSupportData = req.body;
-            
+            const customerAndCrisisSupportData = req.body;               
             const patientCollection = await this.db.getDB().collection('patients');
             const therapistCollection = await this.db.getDB().collection('therapists');
             const customerAndCrisisSupportCollection = await this.db.getDB().collection('customerandcrisissupports');
