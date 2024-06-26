@@ -12,6 +12,9 @@ const cusCriSupSessionRouter = (db) => {
     router.route('/create/:supportType')
         .post(cusCriSupSessionController.createSupport);
     
+    router.route('/type/:supportType') 
+        .get(cusCriSupSessionController.getSupportBySessionType);
+    
     router.route('/user')
         .get(cusCriSupSessionController.getSupportByUserId);
 

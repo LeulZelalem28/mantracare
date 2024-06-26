@@ -90,6 +90,43 @@ class CusCriSupSessionController {
         }
     }
 
+    getSupportBySessionType = async (req, res) => {
+        try {
+            const { supportType } = req.params;
+            if (!supportType) {
+                return res.status(400).json({ message: 'Support type parameter is required' });
+            }
+    
+            const supportSessionsCollection = await this.db.getDB().collection('supportSessions');
+            const supportSessions = await supportSessionsCollection.find({ supportType }, {
+                projection: {
+                    _id: 0,
+                    userId: "$_userId",
+                    username: "$_username",
+                    password: "$_password", 
+                    email: "$_email",
+                    name: "$_name",
+                    dateOfBirth: "$_dateOfBirth",
+                    phoneNumber: "$_phoneNumber",
+                    registrationDate: "$_registrationDate",
+                    profilePic: "$_profilePic",
+                    customerSupportId: "$_customerSupportId",
+                    role: "$_role",
+                },
+            }).toArray();
+    
+            if (!supportSessions.length) {
+                return res.status(404).json({ message: `No support sessions found for type ${supportType}` });
+            }
+    
+            res.json(supportSessions);
+        } catch (error) {
+            res.status(500).json({ message: 'Failed to fetch support sessions' });
+            console.log(error);
+        }
+    };
+    
+
     async createSupport (req, res) {
         try{
             const cusCriSupSessData = req.body;
