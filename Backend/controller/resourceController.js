@@ -168,7 +168,7 @@ class ResourceController {
                     likes: "$_likes",
                     comments: "$_comments"
                 }
-            })({ _resourceTimeStamp: -1 }).skip(startIndex).limit(limit).toArray();
+            }).sort({ _resourceTimeStamp: -1 }).skip(startIndex).limit(limit).toArray();
 
             const totalCount = await resourceCollection.countDocuments();
     
@@ -180,6 +180,7 @@ class ResourceController {
             
         } catch (error) {
             res.status(500).json({ message: 'Failed to fetch resources by therapist ID' });
+            console.log(error)
         }
     }
     

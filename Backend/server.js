@@ -27,6 +27,7 @@ const sessionNoteRouter = require('./routes/sessionNoteRoute');
 const resourceRouter = require('./routes/resourceRoute');
 const forumRouter = require('./routes/forumRoute');
 const forumPostRouter = require('./routes/forumPostRoute');
+const cusCriSupSessionRouter = require('./routes/cusCriSupSessionRoute');
 
 const PORT = process.env.PORT || 3500;
 
@@ -76,7 +77,9 @@ app.use('/feedbackAndRating', feedbackRouter(db));
 app.use('/notes', sessionNoteRouter(db));
 app.use('/resources', resourceRouter(db));
 app.use('/forums', forumRouter(db));
-app.use('/forumposts', forumPostRouter(db))
+app.use('/forumposts', forumPostRouter(db));
+app.use('/customerAndCrisisSupportSession', cusCriSupSessionRouter(db));
+
 
 const usersInRooms = {};
 
