@@ -97,21 +97,16 @@ class CusCriSupSessionController {
                 return res.status(400).json({ message: 'Support type parameter is required' });
             }
     
-            const supportSessionsCollection = await this.db.getDB().collection('supportSessions');
-            const supportSessions = await supportSessionsCollection.find({ supportType }, {
+            const cusCriSupSessionCollection = await this.db.getDB().collection('customerandcrisissupportsessions');
+            const supportSessions = await cusCriSupSessionCollection.find({ _supportType: supportType }, {
                 projection: {
                     _id: 0,
-                    userId: "$_userId",
-                    username: "$_username",
-                    password: "$_password", 
-                    email: "$_email",
-                    name: "$_name",
-                    dateOfBirth: "$_dateOfBirth",
-                    phoneNumber: "$_phoneNumber",
-                    registrationDate: "$_registrationDate",
-                    profilePic: "$_profilePic",
-                    customerSupportId: "$_customerSupportId",
-                    role: "$_role",
+                    sessionId: "$_sessionId", 
+                    customerSupportId: "$_customerSupportId", 
+                    customerSupportEmpName: "$_customerSupportEmpName", 
+                    userId: "$_userId", 
+                    supportType: "$_supportType", 
+                    supportTimeStamp: "$_supportTimeStamp",
                 },
             }).toArray();
     
